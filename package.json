@@ -1,0 +1,17 @@
+{
+  "name": "stencil-test",
+  "scripts": {
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "cd src-stencil && npm run build",
+    "build:server": "cd src-tauri && cargo build",
+    "start:client": "cd src-stencil && npm start",
+    "start:server": "npm run tauri dev",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^1.0.0-rc.3"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^1.0.0-rc.8"
+  }
+}
