@@ -2,10 +2,10 @@
   "name": "stencil-test",
   "scripts": {
     "build": "npm-run-all build:*",
-    "build:client": "cd src-stencil && npm run build",
-    "build:server": "cd src-tauri && cargo build",
+    "build:client": "cd client && npm run build",
+    "build:server": "cd server && cargo build",
     "dev": "npm-run-all --parallel dev:*",
-    "dev:client": "cd src-stencil && npm start",
+    "dev:client": "cd client && npm start",
     "dev:server": "tauri dev",
     "release": "tauri build"
   },
