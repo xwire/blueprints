@@ -1,5 +1,5 @@
 {
-  "name": "stencil-test",
+  "name": "xwire-blueprints",
   "scripts": {
     "build": "npm-run-all build:*",
     "build:client": "cd client && npm run build",
@@ -7,6 +7,9 @@
     "dev": "npm-run-all --parallel dev:*",
     "dev:client": "cd client && npm start",
     "dev:server": "tauri dev",
+    "test": "npm-run-all test:*",
+    "test:client": "cd client && npm run test",
+    "test:server": "",
     "release": "tauri build"
   },
   "dependencies": {

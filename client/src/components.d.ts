@@ -6,10 +6,18 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface XwireBlueprint {
+    }
     interface XwireGrid {
     }
 }
 declare global {
+    interface HTMLXwireBlueprintElement extends Components.XwireBlueprint, HTMLStencilElement {
+    }
+    var HTMLXwireBlueprintElement: {
+        prototype: HTMLXwireBlueprintElement;
+        new (): HTMLXwireBlueprintElement;
+    };
     interface HTMLXwireGridElement extends Components.XwireGrid, HTMLStencilElement {
     }
     var HTMLXwireGridElement: {
@@ -17,13 +25,17 @@ declare global {
         new (): HTMLXwireGridElement;
     };
     interface HTMLElementTagNameMap {
+        "xwire-blueprint": HTMLXwireBlueprintElement;
         "xwire-grid": HTMLXwireGridElement;
     }
 }
 declare namespace LocalJSX {
+    interface XwireBlueprint {
+    }
     interface XwireGrid {
     }
     interface IntrinsicElements {
+        "xwire-blueprint": XwireBlueprint;
         "xwire-grid": XwireGrid;
     }
 }
@@ -31,6 +43,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "xwire-blueprint": LocalJSX.XwireBlueprint & JSXBase.HTMLAttributes<HTMLXwireBlueprintElement>;
             "xwire-grid": LocalJSX.XwireGrid & JSXBase.HTMLAttributes<HTMLXwireGridElement>;
         }
     }
