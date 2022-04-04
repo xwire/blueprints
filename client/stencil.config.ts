@@ -1,7 +1,7 @@
 import { Config } from '@stencil/core';
 
 export const config: Config = {
-  namespace: 'blueprint-stencils',
+  namespace: 'xwire',
   outputTargets: [
     {
       type: 'www',
