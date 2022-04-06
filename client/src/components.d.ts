@@ -5,13 +5,23 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { Blueprint } from "./types/blueprint";
 export namespace Components {
+    interface XwireApp {
+    }
     interface XwireBlueprint {
+        "spec": Blueprint;
     }
     interface XwireGrid {
     }
 }
 declare global {
+    interface HTMLXwireAppElement extends Components.XwireApp, HTMLStencilElement {
+    }
+    var HTMLXwireAppElement: {
+        prototype: HTMLXwireAppElement;
+        new (): HTMLXwireAppElement;
+    };
     interface HTMLXwireBlueprintElement extends Components.XwireBlueprint, HTMLStencilElement {
     }
     var HTMLXwireBlueprintElement: {
@@ -25,16 +35,21 @@ declare global {
         new (): HTMLXwireGridElement;
     };
     interface HTMLElementTagNameMap {
+        "xwire-app": HTMLXwireAppElement;
         "xwire-blueprint": HTMLXwireBlueprintElement;
         "xwire-grid": HTMLXwireGridElement;
     }
 }
 declare namespace LocalJSX {
+    interface XwireApp {
+    }
     interface XwireBlueprint {
+        "spec"?: Blueprint;
     }
     interface XwireGrid {
     }
     interface IntrinsicElements {
+        "xwire-app": XwireApp;
         "xwire-blueprint": XwireBlueprint;
         "xwire-grid": XwireGrid;
     }
@@ -43,6 +58,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "xwire-app": LocalJSX.XwireApp & JSXBase.HTMLAttributes<HTMLXwireAppElement>;
             "xwire-blueprint": LocalJSX.XwireBlueprint & JSXBase.HTMLAttributes<HTMLXwireBlueprintElement>;
             "xwire-grid": LocalJSX.XwireGrid & JSXBase.HTMLAttributes<HTMLXwireGridElement>;
         }
