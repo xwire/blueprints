@@ -1,6 +1,6 @@
 #![cfg_attr(all(not(debug_assertions), target_os = "windows"), windows_subsystem = "windows")]
 
-use app::types::Blueprint;
+use app::types::{Blueprint, DataType};
 
 fn main() {
   tauri::Builder::default()
@@ -13,6 +13,8 @@ fn main() {
 fn load_blueprints() -> Vec<Blueprint> {
   return Vec::from([Blueprint {
     id: String::from("123"),
-    title: String::from("My Blueprint Title")
+    title: String::from("My Blueprint Title"),
+    inputs: vec![DataType::String, DataType::Number, DataType::Bool, DataType::Object],
+    outputs: vec![DataType::String, DataType::Number, DataType::Bool, DataType::Object],
   }]);
 }

@@ -20,7 +20,9 @@ export class XwireApp {
       <Host>
         <xwire-grid>
           {this.blueprints.map(blueprint => (
-            <xwire-blueprint spec={blueprint}/>
+            <div style={{position: 'absolute', left: '100px', top: '100px'}}>
+              <xwire-blueprint spec={blueprint}/>
+            </div>
           ))}
         </xwire-grid>
       </Host>

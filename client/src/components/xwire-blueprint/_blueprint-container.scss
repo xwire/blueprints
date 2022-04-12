@@ -1,0 +1,31 @@
+:host {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-width: 15em;
+  border-radius: 15px;
+  border: 3px solid $color-primary;
+  background-color: rgba($color-primary, 0.25);
+  transition: background-color .1s linear;
+  &.locked {
+    background-color: rgba($color-background, 0.25);
+  }
+  font-family: Arial, Helvetica, sans-serif;
+  box-shadow: rgba(black, 0.35) 0 5px 15px;
+  cursor: grab;
+
+  .blueprint-contract {
+    flex: 1;
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  hr {
+    width: 100%;
+    border-color: $color-primary;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+  }
+}

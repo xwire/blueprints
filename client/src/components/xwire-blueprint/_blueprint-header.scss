@@ -1,0 +1,70 @@
+:host {
+  .blueprint-header {
+    display: flex;
+    margin: 0;
+    padding: 0.5em;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    color: $color-text-primary;
+    background-color: rgba($color-primary, 0.5);
+    transition: background-color .1s linear;
+    &.locked {
+      background-color: rgba($color-background, 0.5);
+    }
+
+    .blueprint-title {
+      flex: 3;
+      display: flex;
+      height: 100%;
+      input {
+        color: inherit;
+        background-color: inherit;
+        text-align: center;
+        font-size: 1em;
+        border: none;
+        outline: none;
+        &.locked:not(:active) {
+          cursor: grab;
+        }
+        &.locked:active {
+          cursor: grabbing;
+        }
+      }
+    }
+
+    .lock-button {
+      flex: 1;
+      display: flex;
+
+      span {
+        flex: 1;
+        text-align: right;
+        align-self: center;
+        transition: color .1s linear;
+
+        &.open {
+          fill: rgba($color-background, 0.75);
+
+          &:hover {
+            fill: rgba($color-background, 1);
+            cursor: pointer;
+          }
+        }
+
+        &.closed {
+          fill: rgba($color-primary, 0.5);
+
+          &:hover {
+            fill: $color-primary;
+            cursor: pointer;
+          }
+        }
+
+        svg {
+          font-size: 1.5em !important;
+          line-height: 1.5em;
+        }
+      }
+    }
+  }
+}

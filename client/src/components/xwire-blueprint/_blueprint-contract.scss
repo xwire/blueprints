@@ -1,0 +1,139 @@
+:host {
+  .blueprint-contract {
+    display: flex;
+    .blueprint-inputs, .blueprint-outputs {
+      flex: 1;
+      .port-list-control {
+        display: flex;
+        flex-direction: column;
+        &.input {
+          align-items: flex-start;
+          margin-right: 0.25em;
+        }
+        &.output {
+          align-items: flex-end;
+          margin-left: 0.25em;
+        }
+      }
+      .port-add-button {
+        transition: color .1s linear;
+        &.input {
+          margin-left: 0.5em;
+          fill: gray;
+          &.locked {
+            fill: gray;
+          }
+        }
+        &.output {
+          margin-right: 0.5em;
+          fill: gray;
+          &.locked {
+            fill: gray;
+          }
+        }
+        &:not(.locked):hover {
+          cursor: pointer;
+          fill: $color-text-primary !important;
+        }
+        svg {
+          width: 1.2em;
+          height: 1.2em;
+        }
+      }
+      .port-control {
+        display: flex;
+        margin-bottom: 0.25em;
+        padding: 0.5em;
+        &.output {
+          .port-circle {
+            order: 1;
+          }
+        }
+      }
+      .port-circle-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 1em;
+        height: 1em;
+        .port-circle {
+          visibility: visible;
+          align-self: center;
+          width: 0.5em;
+          height: 0.5em;
+          border-radius: 50%;
+          transition: all .1s linear;
+          border-width: 0;
+          border-style: solid;
+          &:not(.locked).expand {
+            cursor: pointer;
+            transform: scale(2);
+          }
+          &.number {
+            background-color: rgba($color-number, 0.5);
+            border-color: $color-number;
+          }
+          &.bool {
+            background-color: rgba($color-bool, 0.5);
+            border-color: $color-bool;
+          }
+          &.string {
+            background-color: rgba($color-string, 0.5);
+            border-color: $color-string;
+          }
+          &.object {
+            background-color: rgba($color-object, 0.5);
+            border-color: $color-object;
+          }
+          &:not(.expand).hidden {
+            visibility: hidden;
+          }
+        }
+      }
+      .port-datatype-container {
+        .port-datatype {
+          transition: color .1s linear;
+          &.input {
+            margin-left: 0.5em;
+          }
+          &.output {
+            margin-right: 0.5em;
+          }
+          &.number {
+            color: $color-number;
+          }
+          &.bool {
+            color: $color-bool;
+          }
+          &.string {
+            color: $color-string;
+          }
+          &.object {
+            color: $color-object;
+          }
+          &:not(.locked):hover {
+            cursor: pointer;
+            color: $color-text-primary !important;
+          }
+        }
+      }
+      .port-delete-button {
+        display: flex;
+        align-items: center;
+        fill: rgba($color-text-primary, 0.5);
+        transition: color .1s linear;
+        margin-left: 0.25em;
+        margin-right: 0.25em;
+        &:hover {
+          fill: $color-text-primary;
+          cursor: pointer;
+        }
+        svg {
+          font-size: 1em;
+          height: 1em;
+          width: 1em;
+        }
+      }
+    }
+  }
+}

@@ -1,4 +1,3 @@
-:host {
-  display: block;
-  color: $color-text-primary;
-}
+@import "blueprint-container";
+@import "blueprint-header";
+@import "blueprint-contract";
