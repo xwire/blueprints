@@ -49,34 +49,48 @@ export class XwireBlueprint {
   render() {
     return (
       <Host class={this.locked ? 'locked': ''}>
-        {/* HEADER */}
-        <div class={`blueprint-header ${this.locked ? 'locked' : ''}`}>
-          <div class="blueprint-title">
-            <input type="text" value={this.spec.title} disabled={this.locked}/>
-          </div>
-          <div class="lock-button" onClick={() => this.locked ? this.blueprintUnlocked.emit() : this.blueprintLocked.emit()}>
-            <span class={this.locked ? 'closed' : 'open'}>
-              {this.locked ? (<LockIcon/>) : (<UnlockIcon/>)}
-            </span>
-          </div>
-        </div>
+        <Header
+          title={this.spec.title} locked={this.locked}
+          onLock={this.blueprintLocked.emit} onUnlock={this.blueprintUnlocked.emit}/>
         <hr/>
-        {/* PORTS */}
-        <div class="blueprint-contract">
-          <div class="blueprint-inputs">
-            <PortListControl
-              ports={this.spec.inputs} direction="input" locked={this.locked}
-              onDeletePort={(index) => this.inputRemoved.emit(index)}/>
-          </div>
-          <div class="blueprint-outputs">
-            <PortListControl
-              ports={this.spec.outputs} direction="output" locked={this.locked}
-              onDeletePort={(index) => this.outputRemoved.emit(index)}/>
-          </div>
-        </div>
+        <Contract
+          inputs={this.spec.inputs} outputs={this.spec.outputs} locked={this.locked}
+          onDeleteInput={this.inputRemoved.emit} onDeleteOutput={this.outputRemoved.emit}/>
       </Host>
     );
   }
+}
+
+function Header(props: {title: string, locked: boolean, onLock: Callback<void>, onUnlock: Callback<void>}) {
+  return (
+    <div class={`blueprint-header ${props.locked ? 'locked' : ''}`}>
+      <div class="blueprint-title">
+        <input type="text" value={props.title} disabled={props.locked}/>
+      </div>
+      <div class="lock-button" onClick={() => props.locked ? props.onUnlock() : props.onLock()}>
+            <span class={props.locked ? 'closed' : 'open'}>
+              {props.locked ? (<LockIcon/>) : (<UnlockIcon/>)}
+            </span>
+      </div>
+    </div>
+  );
+}
+
+function Contract(props: {inputs: DataType[], outputs: DataType[], locked: boolean, onDeleteInput: Callback<number>, onDeleteOutput: Callback<number>}) {
+  return (
+    <div class="blueprint-contract">
+      <div class="blueprint-inputs">
+        <PortListControl
+          ports={props.inputs} direction="input" locked={props.locked}
+          onDeletePort={(index) => props.onDeleteInput(index)}/>
+      </div>
+      <div class="blueprint-outputs">
+        <PortListControl
+          ports={props.outputs} direction="output" locked={props.locked}
+          onDeletePort={(index) => props.onDeleteOutput(index)}/>
+      </div>
+    </div>
+  );
 }
 
 function PortListControl(props: {ports: DataType[], direction: 'input' | 'output', locked: boolean, onDeletePort: Callback<number>}) {
