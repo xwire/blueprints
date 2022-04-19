@@ -35,7 +35,7 @@
           cursor: pointer;
           fill: $color-text-primary !important;
         }
-        svg {
+        .xwire-icon__plus {
           width: 1.2em;
           height: 1.2em;
         }
@@ -128,8 +128,7 @@
           fill: $color-text-primary;
           cursor: pointer;
         }
-        svg {
-          font-size: 1em;
+        .xwire-icon__trash {
           height: 1em;
           width: 1em;
         }

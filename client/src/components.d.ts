@@ -44,6 +44,10 @@ declare namespace LocalJSX {
     interface XwireApp {
     }
     interface XwireBlueprint {
+        "onBlueprintLocked"?: (event: CustomEvent<void>) => void;
+        "onBlueprintUnlocked"?: (event: CustomEvent<void>) => void;
+        "onInputRemoved"?: (event: CustomEvent<number>) => void;
+        "onOutputRemoved"?: (event: CustomEvent<number>) => void;
         "spec"?: Blueprint;
     }
     interface XwireGrid {
